@@ -40,3 +40,48 @@ class Solution {
     }
 }
 ```
+
+
+# Question: https://leetcode.com/problems/buddy-strings/ 
+```
+class Solution {
+    public boolean buddyStrings(String s, String goal) {
+        int sLen=s.length();
+        int gLen= goal.length();
+        if(sLen!=gLen){
+            return false;
+        }
+        HashMap<Character, Integer> map1= new HashMap<>();
+        HashMap<Character, Integer> map2= new HashMap<>();
+    
+        for(char c:s.toCharArray()){
+            map1.put(c, map1.getOrDefault(c,0)+1);
+        }
+        for(char c:goal.toCharArray()){
+            map2.put(c, map2.getOrDefault(c,0)+1);
+        }
+        for(char c:s.toCharArray()){
+            if(!map2.containsKey(c)||!map2.get(c).equals(map1.get(c))){
+                return false;
+            }
+        }
+        int count=0;
+        for(int i=0;i<sLen;i++){
+            if(s.charAt(i)!=goal.charAt(i)){
+                count++;
+                if(count>2){
+                    return false;
+                }
+            }
+        }
+        if(count==0){
+          for(char c:s.toCharArray()){
+          if(map1.get(c)>=2){
+                return true;
+          }
+          }
+        }
+        return count==2?true:false;
+    }
+}
+```
