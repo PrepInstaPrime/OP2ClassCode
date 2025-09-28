@@ -22,6 +22,21 @@ public class UnDirectedGraph {
         graph[src][dest]=0;
         graph[dest][src]=0;
     }
+     public void outDegree(int src){
+        int sum=0;
+        for(int col=1;col<=vertices;col++){
+            sum+=graph[src][col];
+        }
+        System.out.println("out degree for "+src+" is : "+sum);
+
+    }
+    public void inDegree(int dest){
+        int sum=0;
+        for(int row=1;row<=vertices;row++){
+            sum+=graph[row][dest];
+        }
+        System.out.println("in degree for "+dest+" is : "+sum);
+    }
     public static void main(String[] args) {
         UnDirectedGraph UG= new UnDirectedGraph(3);
         UG.insert(1, 2);

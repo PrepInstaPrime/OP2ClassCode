@@ -17,6 +17,21 @@ public class DirectedGraph {
             }
         }
     }
+    public void outDegree(int src){
+        int sum=0;
+        for(int col=1;col<=vertices;col++){
+            sum+=graph[src][col];
+        }
+        System.out.println("out degree for "+src+" is : "+sum);
+
+    }
+    public void inDegree(int dest){
+        int sum=0;
+        for(int row=1;row<=vertices;row++){
+            sum+=graph[row][dest];
+        }
+        System.out.println("in degree for "+dest+" is : "+sum);
+    }
     public void delete(int src, int dest){
         graph[src][dest]=0;
     }
@@ -26,8 +41,10 @@ public class DirectedGraph {
         DG.insert(2, 3);
         DG.insert(1, 3);
         // DG.display();
-        DG.delete(1, 3);
+        // DG.delete(1, 3);
         DG.display();
+        DG.inDegree(3);
+        DG.outDegree(1);
     }
 
 }
